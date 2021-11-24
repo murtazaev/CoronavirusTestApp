@@ -41,6 +41,9 @@ object Dependencies {
     const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
 
+    const val rxJava3 = "io.reactivex.rxjava3:rxjava:3.0.0"
+    const val rxJava3RetrofitAdapter = "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0"
+
     const val retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
     const val okhttp3 = "com.squareup.okhttp3:okhttp:4.9.0"
     const val serializationConverter = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"

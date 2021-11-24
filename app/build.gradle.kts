@@ -3,6 +3,8 @@ plugins {
     id(BuildPlugins.kotlinAndroid)
     id(BuildPlugins.kotlinKapt)
     id(BuildPlugins.kotlinSerialization)
+    id(BuildPlugins.navComponentSafeArgs)
+    id(BuildPlugins.kotlinParcelize)
 }
 
 android {
@@ -65,8 +67,15 @@ dependencies {
     implementation(Dependencies.serializationConverter)
     implementation(Dependencies.kotlinxSerialization)
 
-    implementation("io.reactivex.rxjava3:rxjava:3.0.0")
-    implementation("com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0")
+    implementation(Dependencies.navigationFragment)
+    implementation(Dependencies.navigationUiKtx)
+
+    implementation(Dependencies.rxJava3)
+    implementation(Dependencies.rxJava3RetrofitAdapter)
+
+    implementation(Dependencies.room)
+    implementation(Dependencies.roomKtx)
+    kapt(Dependencies.roomCompiler)
 
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")

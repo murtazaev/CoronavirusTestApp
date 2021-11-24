@@ -2,6 +2,8 @@ package ru.coronavirus.testapp.viewmodel
 
 import android.util.Log
 import ru.coronavirus.testapp.domain.usecase.GetCountriesListUseCase
+import ru.coronavirus.testapp.domain.usecase.SaveCountriesInDbUseCase
+import java.lang.NullPointerException
 import javax.inject.Inject
 
 class CountriesViewModel @Inject constructor(
@@ -10,8 +12,11 @@ class CountriesViewModel @Inject constructor(
 
     fun getCountries() {
         getCountries.execute()
+            .onErrorReturn {
+                throw NullPointerException("sdfsdfsdf")
+            }
             .subscribe { t1, t2 ->
-                Log.e("LOLOLO", t1.string())
+
             }
             .addTo(compositeDisposable)
     }

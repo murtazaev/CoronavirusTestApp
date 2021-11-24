@@ -1,4 +1,4 @@
-package ru.coronavirus.testapp.viewmodel
+package ru.coronavirus.testapp.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable

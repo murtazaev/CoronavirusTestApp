@@ -1,11 +1,11 @@
-package ru.coronavirus.testapp.di.module
+package ru.coronavirus.testapp.data.di
 
 import dagger.Binds
 import dagger.Module
-import ru.coronavirus.testapp.data.repositoryimpl.CountriesRepositoryImpl
 import ru.coronavirus.testapp.data.repositoryimpl.CountriesDbRepositoryImpl
-import ru.coronavirus.testapp.domain.repository.CountriesRepository
+import ru.coronavirus.testapp.data.repositoryimpl.CountriesRepositoryImpl
 import ru.coronavirus.testapp.domain.repository.CountriesDbRepository
+import ru.coronavirus.testapp.domain.repository.CountriesRepository
 import javax.inject.Singleton
 
 @Module

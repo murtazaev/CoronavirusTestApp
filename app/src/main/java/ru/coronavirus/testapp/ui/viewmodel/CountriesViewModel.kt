@@ -1,11 +1,13 @@
-package ru.coronavirus.testapp.viewmodel
+package ru.coronavirus.testapp.ui.viewmodel
 
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableBoolean
 import ru.coronavirus.testapp.data.models.Countries
 import ru.coronavirus.testapp.domain.usecase.GetCountriesListUseCase
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class CountriesViewModel @Inject constructor(
     private val getCountries: GetCountriesListUseCase
 ) : BaseViewModel() {

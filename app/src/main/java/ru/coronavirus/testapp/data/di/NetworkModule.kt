@@ -1,10 +1,9 @@
-package ru.coronavirus.testapp.di.module
+package ru.coronavirus.testapp.data.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
-import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType

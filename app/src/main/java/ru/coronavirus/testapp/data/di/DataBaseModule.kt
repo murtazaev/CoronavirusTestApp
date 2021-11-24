@@ -1,4 +1,4 @@
-package ru.coronavirus.testapp.di.module
+package ru.coronavirus.testapp.data.di
 
 import android.content.Context
 import androidx.room.Room

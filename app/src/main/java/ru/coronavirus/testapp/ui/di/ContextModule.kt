@@ -1,9 +1,8 @@
-package ru.coronavirus.testapp.di.module
+package ru.coronavirus.testapp.ui.di
 
 import android.content.Context
 import dagger.Module
 import dagger.Provides
-import javax.inject.Singleton
 
 @Module
 class ContextModule(private val context: Context) {

@@ -2,11 +2,13 @@ package ru.coronavirus.testapp.data.datasource.local
 
 import androidx.room.*
 import ru.coronavirus.testapp.data.models.Countries
+import ru.coronavirus.testapp.data.models.DateTypeConverter
 
 @Database(
     entities = [Countries.Country::class],
     version = 1
 )
+@TypeConverters(DateTypeConverter::class)
 abstract class CoronavirusDb : RoomDatabase() {
     abstract fun countriesDao(): CountriesDao
 }
@@ -28,4 +30,10 @@ interface CountriesDao {
 
     @Query("DELETE FROM country")
     fun clearCounties()
+}
+
+@Dao
+interface ConfirmedByCountryDao {
+
+
 }

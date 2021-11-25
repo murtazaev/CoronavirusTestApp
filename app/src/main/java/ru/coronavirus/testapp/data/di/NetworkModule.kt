@@ -6,11 +6,14 @@ import dagger.Provides
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.modules.SerializersModule
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import ru.coronavirus.testapp.BuildConfig
 import ru.coronavirus.testapp.data.datasource.network.CoronavirusApi
+import ru.coronavirus.testapp.data.models.DateSerializer
+import java.util.*
 import javax.inject.Singleton
 
 @Module
@@ -22,6 +25,9 @@ class NetworkModule {
         val json = Json {
             ignoreUnknownKeys = true
             coerceInputValues = true
+            serializersModule = SerializersModule {
+                contextual(Date::class, DateSerializer)
+            }
         }
 
         val okHttpBuilder = OkHttpClient().newBuilder()

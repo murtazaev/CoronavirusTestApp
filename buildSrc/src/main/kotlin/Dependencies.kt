@@ -47,5 +47,5 @@ object Dependencies {
     const val retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
     const val okhttp3 = "com.squareup.okhttp3:okhttp:4.9.0"
     const val serializationConverter = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
-    const val kotlinxSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1"
+    const val kotlinxSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.1"
 }

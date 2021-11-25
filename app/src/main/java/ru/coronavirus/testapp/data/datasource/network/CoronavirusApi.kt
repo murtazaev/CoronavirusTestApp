@@ -7,13 +7,17 @@ import retrofit2.http.Query
 import ru.coronavirus.testapp.data.models.ConfirmedByCountry
 import ru.coronavirus.testapp.data.models.Countries
 
-interface CoronavirusApi {
+//Мало конечно методов для сегригации, но в тестовом думаю можно
+interface CoronavirusApi : CountriesApi, CountryDetailsApi
 
+interface CountriesApi {
     @GET("summary")
     fun getCountriesList(): Single<Countries>
+}
 
+interface CountryDetailsApi {
     @GET("total/country/{countryName}/status/confirmed")
-    fun getCountryDetail(
+    fun getConfirmsByCountry(
         @Path("countryName") countryName: String,
         @Query("from") from: String,
         @Query("to") to: String

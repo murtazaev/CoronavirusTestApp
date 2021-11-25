@@ -1,6 +1,7 @@
 package ru.coronavirus.testapp.data.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
@@ -12,6 +13,8 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import ru.coronavirus.testapp.BuildConfig
 import ru.coronavirus.testapp.data.datasource.network.CoronavirusApi
+import ru.coronavirus.testapp.data.datasource.network.CountriesApi
+import ru.coronavirus.testapp.data.datasource.network.CountryDetailsApi
 import ru.coronavirus.testapp.data.models.DateSerializer
 import java.util.*
 import javax.inject.Singleton
@@ -26,7 +29,7 @@ class NetworkModule {
             ignoreUnknownKeys = true
             coerceInputValues = true
             serializersModule = SerializersModule {
-                contextual(Date::class, DateSerializer)
+                contextual(Date::class, DateSerializer())
             }
         }
 
@@ -45,4 +48,13 @@ class NetworkModule {
     fun provideCoronavirusApi(retrofit: Retrofit): CoronavirusApi{
         return retrofit.create(CoronavirusApi::class.java)
     }
+}
+
+@Module
+abstract class NetworkApiModule {
+    @Binds
+    abstract fun bindCountriesApi(p: CoronavirusApi): CountriesApi
+
+    @Binds
+    abstract fun bindCountryDetailsApi(p: CoronavirusApi): CountryDetailsApi
 }

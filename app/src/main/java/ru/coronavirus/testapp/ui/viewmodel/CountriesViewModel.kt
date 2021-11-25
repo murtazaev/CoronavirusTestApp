@@ -58,7 +58,7 @@ class CountriesViewModel @Inject constructor(
                 searchCountries.execute(searchStr.get() ?: "")
             }
             .subscribeOn(Schedulers.io())
-            .delaySubscription(300, TimeUnit.MILLISECONDS)
+            .delaySubscription(250, TimeUnit.MILLISECONDS)
             .subscribe(
                 Consumer {
                     if (it.isEmpty()) {

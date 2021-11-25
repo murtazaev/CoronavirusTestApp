@@ -44,12 +44,12 @@ data class Countries(@SerialName("Countries") val countries: List<Country>) {
     }
 }
 
-object DateSerializer : KSerializer<Date> {
-    private val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSZ", Locale.getDefault())
+class DateSerializer : KSerializer<Date> {
+    private val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSS'Z'", Locale.getDefault())
     override val descriptor = PrimitiveSerialDescriptor("Date", PrimitiveKind.STRING)
     override fun serialize(encoder: Encoder, value: Date) = encoder.encodeLong(value.time)
     override fun deserialize(decoder: Decoder): Date {
-        val decodedStr = decoder.decodeString().replace("Z", "+0000")
+        val decodedStr = decoder.decodeString()
         val date = simpleDateFormat.parse(decodedStr)
         return date ?: Date()
     }

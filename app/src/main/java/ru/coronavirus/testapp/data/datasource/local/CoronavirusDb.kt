@@ -9,8 +9,13 @@ import ru.coronavirus.testapp.data.models.DateTypeConverter
     version = 1
 )
 @TypeConverters(DateTypeConverter::class)
-abstract class CoronavirusDb : RoomDatabase() {
-    abstract fun countriesDao(): CountriesDao
+abstract class CoronavirusDb : RoomDatabase(), CountriesDb, ConfirmedByCountryDb
+
+interface CountriesDb{
+    fun countriesDao(): CountriesDao
+}
+interface ConfirmedByCountryDb{
+    fun confirmsDao(): ConfirmedByCountryDao
 }
 
 @Dao

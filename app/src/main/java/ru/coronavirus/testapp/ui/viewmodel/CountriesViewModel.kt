@@ -16,7 +16,7 @@ class CountriesViewModel @Inject constructor(
     val countries = ObservableArrayList<Countries.Country>()
     val error = ObservableBoolean(false)
 
-    fun getCountries() {
+    fun requestCountries() {
         error.set(false)
         getCountries.execute()
             .subscribe(

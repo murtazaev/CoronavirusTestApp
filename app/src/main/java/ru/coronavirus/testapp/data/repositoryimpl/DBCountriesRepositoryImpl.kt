@@ -1,14 +1,13 @@
 package ru.coronavirus.testapp.data.repositoryimpl
 
-import ru.coronavirus.testapp.data.datasource.local.CoronavirusDb
 import ru.coronavirus.testapp.data.datasource.local.CountriesDb
 import ru.coronavirus.testapp.data.models.Countries
-import ru.coronavirus.testapp.domain.repository.CountriesDbRepository
+import ru.coronavirus.testapp.domain.repository.DBCountriesRepository
 import javax.inject.Inject
 
-class CountriesDbRepositoryImpl @Inject constructor(
+class DBCountriesRepositoryImpl @Inject constructor(
     private val db: CountriesDb
-) : CountriesDbRepository {
+) : DBCountriesRepository {
     override fun saveCountriesInDb(countries: List<Countries.Country>) {
         db.countriesDao().updateCountries(countries)
     }

@@ -15,4 +15,8 @@ class CountriesDbRepositoryImpl @Inject constructor(
     override fun getCountriesFromDb(): List<Countries.Country> {
         return db.countriesDao().getCountries()
     }
+
+    override fun searchCountries(query: String): List<Countries.Country> {
+        return db.countriesDao().searchCountries(query)
+    }
 }

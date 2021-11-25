@@ -5,4 +5,5 @@ import ru.coronavirus.testapp.data.models.Countries
 interface CountriesDbRepository {
     fun saveCountriesInDb(countries: List<Countries.Country>)
     fun getCountriesFromDb(): List<Countries.Country>
+    fun searchCountries(query: String): List<Countries.Country>
 }

@@ -25,6 +25,9 @@ interface CountriesDao {
     @Query("SELECT * FROM country")
     fun getCountries(): List<Countries.Country>
 
+    @Query("SELECT * FROM country WHERE country || countryCode LIKE  '%' || :query || '%'")
+    fun searchCountries(query: String): List<Countries.Country>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCountries(countries: List<Countries.Country>)
 

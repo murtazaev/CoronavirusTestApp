@@ -4,9 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/abdulmutalim/AndroidStudioProjects/CoronavirusTestApp/app/src/main/res/layout/activity_main.xml" value="0.21014492753623187" />
+        <entry key="..\:/Users/abdulmutalim/AndroidStudioProjects/CoronavirusTestApp/app/src/main/res/layout/chart_marker_view.xml" value="0.1671195652173913" />
         <entry key="..\:/Users/abdulmutalim/AndroidStudioProjects/CoronavirusTestApp/app/src/main/res/layout/country_item.xml" value="0.20652173913043478" />
         <entry key="..\:/Users/abdulmutalim/AndroidStudioProjects/CoronavirusTestApp/app/src/main/res/layout/fragment_countries.xml" value="0.4" />
-        <entry key="..\:/Users/abdulmutalim/AndroidStudioProjects/CoronavirusTestApp/app/src/main/res/layout/fragment_country_details.xml" value="0.46647230320699706" />
+        <entry key="..\:/Users/abdulmutalim/AndroidStudioProjects/CoronavirusTestApp/app/src/main/res/layout/fragment_country_details.xml" value="0.4411764705882353" />
       </map>
     </option>
   </component>

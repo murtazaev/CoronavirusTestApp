@@ -18,7 +18,7 @@ import java.util.*
     ]
 )
 data class Confirm(
-    //назвал просто чтоб путаницы небыло в связях базы данных
+    //назвал так просто чтоб путаницы небыло в связях базы данных
     @SerialName("Country") val countryConfirmed: String,
     @SerialName("CountryCode") val countryCode: String,
     @SerialName("Province") val province: String,

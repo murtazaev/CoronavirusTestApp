@@ -23,7 +23,7 @@ interface DBConfirmedByCountry {
 
 @Dao
 interface CountriesDao {
-    @Query("SELECT * FROM country")
+    @Query("SELECT * FROM country ORDER BY country")
     fun getCountries(): List<Countries.Country>
 
     @Query("SELECT * FROM country WHERE country LIKE '%' || :query || '%' ORDER BY country")

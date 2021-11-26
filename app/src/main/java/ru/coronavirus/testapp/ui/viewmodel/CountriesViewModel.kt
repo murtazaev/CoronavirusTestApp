@@ -23,8 +23,6 @@ class CountriesViewModel @Inject constructor(
     val countries = ObservableArrayList<Countries.Country>()
     val searchStr = ObservableField("")
     val emptySearch = ObservableBoolean(false)
-    val error = ObservableBoolean(false)
-
     var searchDisposable: Disposable? = null
 
     init {
@@ -36,15 +34,19 @@ class CountriesViewModel @Inject constructor(
     }
 
     fun requestCountries() {
-        error.set(false)
+        error = false
+        isLoading = true
         getCountries.execute()
+            .doFinally {
+                isLoading = false
+            }
             .subscribe(
                 { mCountries ->
                     countries.clear()
                     countries.addAll(mCountries.countries)
                 },
                 { mError ->
-                    error.set(true)
+                    error = true
                 }
             )
             .addTo(compositeDisposable)

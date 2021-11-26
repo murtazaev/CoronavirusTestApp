@@ -57,7 +57,6 @@ dependencies {
 
     implementation(Dependencies.coreKtx)
     implementation(Dependencies.appCompat)
-//    implementation(Dependencies.lifecycleViewModelKtx)
     implementation(Dependencies.material)
     implementation(Dependencies.constraintLayout)
     implementation(Dependencies.dagger)
@@ -72,11 +71,14 @@ dependencies {
     implementation(Dependencies.navigationUiKtx)
 
     implementation(Dependencies.rxJava3)
+    implementation(Dependencies.rxAndroid3)
     implementation(Dependencies.rxJava3RetrofitAdapter)
 
     implementation(Dependencies.room)
     implementation(Dependencies.roomKtx)
     kapt(Dependencies.roomCompiler)
+
+    implementation(Dependencies.chartsView)
 
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")

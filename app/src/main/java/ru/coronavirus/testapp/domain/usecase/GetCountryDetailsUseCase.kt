@@ -26,12 +26,6 @@ class GetCountryDetailsUseCase @Inject constructor(
                     confirms.dbKey = confirms.countryConfirmed.hashCode()+index
                 }
                 db.confirmsDao().insertConfirms(it)
-
-
-                val confirms = db.confirmsDao().getCountryConfirms(county.country)
-
-                Log.e("ASFASF", "$confirms")
-
             }
             .onErrorReturn {
                 val confirms = db.confirmsDao().getCountryConfirms(county.country)

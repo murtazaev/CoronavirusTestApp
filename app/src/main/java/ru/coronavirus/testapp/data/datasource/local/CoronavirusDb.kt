@@ -6,7 +6,7 @@ import ru.coronavirus.testapp.data.models.*
 @Database(
     entities = [
         Countries.Country::class,
-        Confirms::class
+        Confirm::class
     ],
     version = 1
 )
@@ -40,7 +40,7 @@ interface CountriesDao {
 interface ConfirmedByCountryDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertConfirms(c: List<Confirms>)
+    fun insertConfirms(c: List<Confirm>)
 
     @Query("SELECT * FROM country WHERE country == :countryName")
     fun getCountryConfirms(countryName: String): ConfirmsDBWrapper?

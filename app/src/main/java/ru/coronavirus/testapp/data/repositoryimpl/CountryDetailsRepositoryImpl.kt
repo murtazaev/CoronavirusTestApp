@@ -2,7 +2,7 @@ package ru.coronavirus.testapp.data.repositoryimpl
 
 import io.reactivex.rxjava3.core.Single
 import ru.coronavirus.testapp.data.datasource.network.CountryDetailsApi
-import ru.coronavirus.testapp.data.models.Confirms
+import ru.coronavirus.testapp.data.models.Confirm
 import ru.coronavirus.testapp.domain.repository.CountryDetailsRepository
 import javax.inject.Inject
 
@@ -14,7 +14,7 @@ class CountryDetailsRepositoryImpl @Inject constructor(
         countryName: String,
         from: String,
         to: String
-    ): Single<List<Confirms>> {
+    ): Single<List<Confirm>> {
         return api.getConfirmsByCountry(countryName, from, to)
     }
 }

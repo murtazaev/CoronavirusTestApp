@@ -4,7 +4,7 @@ import android.util.Log
 import io.reactivex.rxjava3.core.Single
 import ru.coronavirus.testapp.data.datasource.local.DBConfirmedByCountry
 import ru.coronavirus.testapp.data.datasource.network.CountryDetailsApi
-import ru.coronavirus.testapp.data.models.Confirms
+import ru.coronavirus.testapp.data.models.Confirm
 import ru.coronavirus.testapp.data.models.Countries
 import javax.inject.Inject
 
@@ -13,7 +13,7 @@ class GetCountryDetailsUseCase @Inject constructor(
     private val db: DBConfirmedByCountry
 ) {
 
-    fun execute(county: Countries.Country, from: String, to: String): Single<List<Confirms>> {
+    fun execute(county: Countries.Country, from: String, to: String): Single<List<Confirm>> {
         return api.getConfirmsByCountry(county.country, from, to)
             .doAfterSuccess {
                 if (it.isEmpty()) return@doAfterSuccess

@@ -4,7 +4,7 @@ import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import ru.coronavirus.testapp.data.models.Confirms
+import ru.coronavirus.testapp.data.models.Confirm
 import ru.coronavirus.testapp.data.models.Countries
 
 //Мало конечно методов для сегригации, но в тестовом думаю можно
@@ -21,5 +21,5 @@ interface CountryDetailsApi {
         @Path("countryName") countryName: String,
         @Query("from") from: String,
         @Query("to") to: String
-    ): Single<List<Confirms>>
+    ): Single<List<Confirm>>
 }

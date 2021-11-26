@@ -4,7 +4,6 @@ import androidx.room.*
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.Transient
 import java.util.*
 
 @Serializable
@@ -18,7 +17,7 @@ import java.util.*
         )
     ]
 )
-data class Confirms(
+data class Confirm(
     //назвал просто чтоб путаницы небыло в связях базы данных
     @SerialName("Country") val countryConfirmed: String,
     @SerialName("CountryCode") val countryCode: String,
@@ -43,5 +42,5 @@ data class ConfirmsDBWrapper(
         parentColumn = "country",
         entityColumn = "countryConfirmed"
     )
-    val confirms: List<Confirms>
+    val confirms: List<Confirm>
 )

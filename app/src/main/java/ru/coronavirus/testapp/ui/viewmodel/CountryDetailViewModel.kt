@@ -41,7 +41,7 @@ class CountryDetailViewModel @Inject constructor(
         getDetails.execute(
             country,
             simpleDateFormat.format(Date(System.currentTimeMillis() - twoWeeksInMillis)),
-            simpleDateFormat.format(Date())
+            simpleDateFormat.format(Date(System.currentTimeMillis() - 60000 * 60 * 24))
         )
             .doFinally {
                 isLoading = false
@@ -63,12 +63,17 @@ class CountryDetailViewModel @Inject constructor(
     fun buildChartData(confirms: List<Confirm>): BarData {
         val entry = ArrayList<BarEntry>()
         confirms.forEachIndexed { index, it ->
-            entry.add(BarEntry(index.toFloat(), it.cases.toFloat()))
+            entry.add(BarEntry(index.toFloat(), it.cases.toFloat(), it.cases))
         }
         val dataSet = BarDataSet(entry, context.getString(R.string.morbidity_by_days))
         dataSet.setColors(intArrayOf(R.color.red), context)
         return BarData(dataSet).apply {
             this.setValueTextSize(0f)
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        confirmsInTwoWeeks.value = null
     }
 }

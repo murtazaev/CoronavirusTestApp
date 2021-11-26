@@ -15,12 +15,12 @@ class ChartMarkerView(context: Context, @LayoutRes layoutRes: Int) :
         private val textView: TextView = findViewById(R.id.textView)
 
     override fun refreshContent(e: Entry?, highlight: Highlight?) {
-        textView.text = e?.x.toString()
+        textView.text = (e?.data as? Int).toString()
 
         super.refreshContent(e, highlight)
     }
 
     override fun getOffset(): MPPointF {
-        return super.getOffset()
+        return MPPointF(-(width / 2).toFloat(), -height.toFloat())
     }
 }

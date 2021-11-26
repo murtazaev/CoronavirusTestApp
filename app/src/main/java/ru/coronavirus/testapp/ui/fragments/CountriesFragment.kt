@@ -5,18 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import ru.coronavirus.testapp.R
 import ru.coronavirus.testapp.databinding.FragmentCountriesBinding
 import ru.coronavirus.testapp.ui.MainActivity
 import ru.coronavirus.testapp.ui.adapter.CountriesAdapter
 import ru.coronavirus.testapp.ui.viewmodel.CountriesViewModel
-import javax.inject.Inject
 
 
 class CountriesFragment : BaseFragment<FragmentCountriesBinding>() {
 
-    @Inject
-    lateinit var viewModel: CountriesViewModel
+    private val viewModel: CountriesViewModel by viewModels { viewModelFactory }
+
     private val adapter = CountriesAdapter {
         navController.navigate(
             R.id.countryDetailsFragment,

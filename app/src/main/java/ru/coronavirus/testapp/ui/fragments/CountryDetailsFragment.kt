@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.Observable
+import androidx.fragment.app.viewModels
 import ru.coronavirus.testapp.R
 import ru.coronavirus.testapp.data.models.Countries
 import ru.coronavirus.testapp.databinding.FragmentCountryDetailsBinding
@@ -16,8 +17,7 @@ import javax.inject.Inject
 
 class CountryDetailsFragment : BaseFragment<FragmentCountryDetailsBinding>() {
 
-    @Inject
-    lateinit var viewModel: CountryDetailViewModel
+    val viewModel: CountryDetailViewModel by viewModels { viewModelFactory }
     private val args by lazy { CountryDetailsFragmentArgs.fromBundle(requireArguments()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {

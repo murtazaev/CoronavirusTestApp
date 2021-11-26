@@ -30,6 +30,7 @@ object Dependencies {
     const val material = "com.google.android.material:material:1.4.0"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.1"
     const val legacySupport = "androidx.legacy:legacy-support-v4:1.0.0"
+    const val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
 
     const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
     const val daggerKapt = "com.google.dagger:dagger-compiler:${Versions.dagger}"

@@ -13,7 +13,7 @@ class GetCountriesListUseCase @Inject constructor(
 
     fun execute(): Single<Countries> {
         return repo.getCountriesList()
-            .doOnSuccess {
+            .doAfterSuccess {
                 dbRepo.saveCountriesInDb(it.countries)
             }
             .onErrorReturn {

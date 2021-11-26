@@ -19,6 +19,7 @@ class CountryDetailsFragment : BaseFragment<FragmentCountryDetailsBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         (context as MainActivity).mainComponent.inject(this)
         super.onCreate(savedInstanceState)
+        viewModel.requestDetails()
     }
 
     override fun onCreateView(

@@ -5,9 +5,9 @@ import androidx.room.Room
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import ru.coronavirus.testapp.data.datasource.local.ConfirmedByCountryDb
+import ru.coronavirus.testapp.data.datasource.local.DBConfirmedByCountry
 import ru.coronavirus.testapp.data.datasource.local.CoronavirusDb
-import ru.coronavirus.testapp.data.datasource.local.CountriesDb
+import ru.coronavirus.testapp.data.datasource.local.DBCountries
 import javax.inject.Singleton
 
 @Module
@@ -25,8 +25,8 @@ class DataBaseModule {
 @Module
 abstract class DataBaseDaoModule {
     @Binds
-    abstract fun bindCountriesDb(c: CoronavirusDb): CountriesDb
+    abstract fun bindCountriesDb(c: CoronavirusDb): DBCountries
 
     @Binds
-    abstract fun bindConfirmedByCountryDb(c: CoronavirusDb): ConfirmedByCountryDb
+    abstract fun bindConfirmedByCountryDb(c: CoronavirusDb): DBConfirmedByCountry
 }

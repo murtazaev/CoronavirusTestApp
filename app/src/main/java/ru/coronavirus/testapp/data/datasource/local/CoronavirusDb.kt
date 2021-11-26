@@ -9,12 +9,12 @@ import ru.coronavirus.testapp.data.models.DateTypeConverter
     version = 1
 )
 @TypeConverters(DateTypeConverter::class)
-abstract class CoronavirusDb : RoomDatabase(), CountriesDb, ConfirmedByCountryDb
+abstract class CoronavirusDb : RoomDatabase(), DBCountries, DBConfirmedByCountry
 
-interface CountriesDb{
+interface DBCountries{
     fun countriesDao(): CountriesDao
 }
-interface ConfirmedByCountryDb{
+interface DBConfirmedByCountry{
     fun confirmsDao(): ConfirmedByCountryDao
 }
 
@@ -30,7 +30,7 @@ interface CountriesDao {
     @Query("SELECT * FROM country")
     fun getCountries(): List<Countries.Country>
 
-    @Query("SELECT * FROM country WHERE country || countryCode LIKE  '%' || :query || '%'")
+    @Query("SELECT * FROM country WHERE country LIKE  '%' || :query OR countryCode LIKE :query")
     fun searchCountries(query: String): List<Countries.Country>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

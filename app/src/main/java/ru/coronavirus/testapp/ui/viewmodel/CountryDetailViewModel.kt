@@ -2,6 +2,7 @@ package ru.coronavirus.testapp.ui.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
+import ru.coronavirus.testapp.data.models.Countries
 import ru.coronavirus.testapp.domain.usecase.GetCountryDetailsUseCase
 import java.text.SimpleDateFormat
 import java.util.*
@@ -18,10 +19,10 @@ class CountryDetailViewModel @Inject constructor(
     //минута в милисекундах * минут в часе * часов в дне * дней в двух неделях
     private val twoWeeksInMillis = 60000 * 60 * 24 * 14
 
-    fun requestDetails() {
+    fun requestDetails(country: Countries.Country) {
 
         getDetails.execute(
-            "Russia",
+            country,
             simpleDateFormat.format(Date(System.currentTimeMillis() - twoWeeksInMillis)),
             simpleDateFormat.format(Date())
         )

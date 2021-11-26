@@ -2,26 +2,32 @@ package ru.coronavirus.testapp.data.models
 
 import android.os.Parcelable
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
-import kotlinx.serialization.*
+import kotlinx.serialization.Contextual
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import java.text.ParseException
-import java.text.ParsePosition
 import java.text.SimpleDateFormat
-import java.time.Instant
 import java.util.*
 
 @Serializable
 data class Countries(@SerialName("Countries") val countries: List<Country>) {
 
     @Serializable
-    @Entity
+    @Entity(
+        indices = [
+            Index("country", unique = true)
+        ]
+    )
     @Parcelize
     data class Country(
         @SerialName("Country") val country: String,
@@ -37,18 +43,18 @@ data class Countries(@SerialName("Countries") val countries: List<Country>) {
         @Contextual
         val date: Date,
     ) : Parcelable {
-
+        @PrimaryKey
         @IgnoredOnParcel
-        @Transient
-        @PrimaryKey(autoGenerate = true)
-        var dbKey = 0
+        var dbKey: Int = country.hashCode()
     }
 }
 
 class DateSerializer : KSerializer<Date> {
     //в списке и в деталях даты приходят в разном формате почемуто
-    private val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSS'Z'", Locale.getDefault())
-    private val simpleDateFormat2 = SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'", Locale.getDefault())
+    private val simpleDateFormat =
+        SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSS'Z'", Locale.getDefault())
+    private val simpleDateFormat2 =
+        SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'", Locale.getDefault())
 
     override val descriptor = PrimitiveSerialDescriptor("Date", PrimitiveKind.STRING)
     override fun serialize(encoder: Encoder, value: Date) = encoder.encodeLong(value.time)

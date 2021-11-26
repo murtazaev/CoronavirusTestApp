@@ -9,7 +9,7 @@ class DBCountriesRepositoryImpl @Inject constructor(
     private val db: DBCountries
 ) : DBCountriesRepository {
     override fun saveCountriesInDb(countries: List<Countries.Country>) {
-        db.countriesDao().updateCountries(countries)
+        db.countriesDao().insertCountries(countries)
     }
 
     override fun getCountriesFromDb(): List<Countries.Country> {

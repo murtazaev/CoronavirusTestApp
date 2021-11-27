@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/abdulmutalim/AndroidStudioProjects/CoronavirusTestApp/app/src/main/res/drawable/vertical_progress_bar.xml" value="0.26205128205128203" />
         <entry key="..\:/Users/abdulmutalim/AndroidStudioProjects/CoronavirusTestApp/app/src/main/res/layout/activity_main.xml" value="0.21014492753623187" />
         <entry key="..\:/Users/abdulmutalim/AndroidStudioProjects/CoronavirusTestApp/app/src/main/res/layout/chart_marker_view.xml" value="0.1671195652173913" />
+        <entry key="..\:/Users/abdulmutalim/AndroidStudioProjects/CoronavirusTestApp/app/src/main/res/layout/confirmed_item.xml" value="0.128125" />
         <entry key="..\:/Users/abdulmutalim/AndroidStudioProjects/CoronavirusTestApp/app/src/main/res/layout/country_item.xml" value="0.20652173913043478" />
         <entry key="..\:/Users/abdulmutalim/AndroidStudioProjects/CoronavirusTestApp/app/src/main/res/layout/fragment_countries.xml" value="0.4" />
-        <entry key="..\:/Users/abdulmutalim/AndroidStudioProjects/CoronavirusTestApp/app/src/main/res/layout/fragment_country_details.xml" value="0.4411764705882353" />
+        <entry key="..\:/Users/abdulmutalim/AndroidStudioProjects/CoronavirusTestApp/app/src/main/res/layout/fragment_country_details.xml" value="0.2" />
       </map>
     </option>
   </component>

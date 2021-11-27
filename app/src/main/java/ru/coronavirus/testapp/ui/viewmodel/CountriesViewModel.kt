@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
 class CountriesViewModel @Inject constructor(
     private val getCountries: GetCountriesListUseCase,
     private val searchCountries: SearchCountriesUseCase

@@ -46,8 +46,6 @@ object Dependencies {
     const val rxAndroid3 = "io.reactivex.rxjava3:rxandroid:3.0.0"
     const val rxJava3RetrofitAdapter = "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0"
 
-    const val chartsView = "com.github.PhilJay:MPAndroidChart:v3.1.0"
-
     const val retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
     const val okhttp3 = "com.squareup.okhttp3:okhttp:4.9.0"
     const val serializationConverter = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,91 +8,75 @@
             type="ru.coronavirus.testapp.ui.viewmodel.CountryDetailViewModel" />
     </data>
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/coordinator"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:context=".ui.fragments.CountryDetailsFragment">
+            android:background="#00000000"
+            app:elevation="0dp">
 
-            <TextView
-                android:id="@+id/countryName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{vm.country.country}"
-                android:textSize="30sp"
-                tools:text="Russia" />
-
-            <!--        <TextView-->
-            <!--            android:id="@+id/onCurrentDayStats"-->
-            <!--            android:layout_width="wrap_content"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            tools:text="Статистика на 12 октября 2021" />-->
-
-            <!--        <TextView-->
-            <!--            android:id="@+id/newRecovered"-->
-            <!--            android:layout_width="wrap_content"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:text="@{String.valueOf(vm.country.newRecovered)}"-->
-            <!--            android:textColor="@color/green"-->
-            <!--            tools:text="+1000 выздоровлений" />-->
-
-            <!--        <TextView-->
-            <!--            android:id="@+id/newConfirmed"-->
-            <!--            android:layout_width="wrap_content"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:text="@{String.valueOf(vm.country.newConfirmed)}"-->
-            <!--            android:textColor="@color/orange"-->
-            <!--            tools:text="+1000 заражений" />-->
-
-            <!--        <TextView-->
-            <!--            android:id="@+id/newDeath"-->
-            <!--            android:layout_width="wrap_content"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:text="@{String.valueOf(vm.country.newDeath)}"-->
-            <!--            android:textColor="@color/red"-->
-            <!--            tools:text="+1000 смертей" />-->
-
-            <TextView
-                android:id="@+id/totalStats"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="Общая статистика" />
-
-            <TextView
-                android:id="@+id/totalRecovered"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{String.valueOf(vm.country.totalRecovered)}"
-                android:textColor="@color/green"
-                tools:text="1000 выздоровлений" />
-
-            <TextView
-                android:id="@+id/totalConfirmed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{String.valueOf(vm.country.totalConfirmed)}"
-                android:textColor="@color/orange"
-                tools:text="1000 заражений" />
-
-            <TextView
-                android:id="@+id/totalDeath"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{String.valueOf(vm.country.totalDeath)}"
-                android:textColor="@color/red"
-                tools:text="1000 смертей" />
-
-            <com.github.mikephil.charting.charts.BarChart
-                android:id="@+id/charts"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_scrollFlags="scroll"
+                tools:context=".ui.fragments.CountryDetailsFragment">
 
-        </LinearLayout>
-    </ScrollView>
+                <TextView
+                    android:id="@+id/countryName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.country.country}"
+                    android:textSize="30sp"
+                    tools:text="Russia" />
+
+                <TextView
+                    android:id="@+id/totalStats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Общая статистика" />
+
+                <TextView
+                    android:id="@+id/totalRecovered"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(vm.country.totalRecovered)}"
+                    android:textColor="@color/green"
+                    tools:text="1000 выздоровлений" />
+
+                <TextView
+                    android:id="@+id/totalConfirmed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(vm.country.totalConfirmed)}"
+                    android:textColor="@color/orange"
+                    tools:text="1000 заражений" />
+
+                <TextView
+                    android:id="@+id/totalDeath"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(vm.country.totalDeath)}"
+                    android:textColor="@color/red"
+                    tools:text="1000 смертей" />
+
+
+            </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/confirmsByDays"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:bindData="@{vm.confirmsInTwoWeeks}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

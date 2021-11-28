@@ -52,7 +52,6 @@ class CountriesViewModel @Inject constructor(
     }
 
     fun searchCountries() {
-        emptySearch.set(false)
         searchDisposable?.dispose()
         searchDisposable = Single
             .fromCallable {
@@ -61,19 +60,21 @@ class CountriesViewModel @Inject constructor(
             .subscribeOn(Schedulers.io())
             .delaySubscription(250, TimeUnit.MILLISECONDS)
             .subscribe(
-                Consumer {
-                    if (it.isEmpty()) {
-                        emptySearch.set(true)
-                        return@Consumer
+                {
+                    emptySearch.set(it.isEmpty())
+                    if (it.isNotEmpty()) {
+                        countries.clear()
+                        countries.addAll(it)
                     }
-                    countries.clear()
-                    countries.addAll(it)
+                },
+                {
+                    emptySearch.set(false)
                 }
             )
             .addTo(compositeDisposable)
     }
 
     override fun retryLoad() {
-
+        requestCountries()
     }
 }

@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/search_by_country"
                 android:text="@={vm.searchStr}"
+                android:enabled="@{!vm.errorObservable &amp;&amp; !vm.isLoadingObservable()}"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 app:layout_scrollFlags="scroll|enterAlways" />
@@ -37,7 +38,33 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:bindData="@{vm.countries}"
+            app:invisibleIf="@{vm.errorObservable || vm.isLoadingObservable() || vm.emptySearch}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="50dp"
+            android:text="@string/empty_search"
+            android:textSize="20sp"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:visibleIf="@{vm.emptySearch &amp;&amp; !vm.isLoadingObservable() &amp;&amp; !vm.errorObservable}" />
+
+        <include
+            layout="@layout/screen_initial_progress_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:viewModel="@{vm}" />
+
+        <include
+            layout="@layout/screen_error_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:viewModel="@{vm}" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

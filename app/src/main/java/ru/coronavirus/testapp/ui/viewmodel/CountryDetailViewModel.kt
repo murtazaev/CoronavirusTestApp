@@ -34,20 +34,19 @@ class CountryDetailViewModel @Inject constructor(
         getDetails.execute(
             country,
             simpleDateFormat.format(Date(System.currentTimeMillis() - twoWeeksInMillis)),
+            //На сервере ошибка, если нет данных на текущую дату, то он начинает возвращать всю историю
+            //поэтому отнимаю сутки
             simpleDateFormat.format(Date(System.currentTimeMillis() - 60000 * 60 * 24))
         )
             .doFinally {
                 isLoading = false
             }
-            .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
                     confirmsInTwoWeeks.addAll(it)
-                    Log.e("SUCCESS", "${it}")
                 },
                 {
                     error = true
-                    Log.e("ERROR", it.message.toString())
                 }
             )
             .addTo(compositeDisposable)

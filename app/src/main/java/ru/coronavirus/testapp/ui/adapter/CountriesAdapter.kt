@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.coronavirus.testapp.R
 import ru.coronavirus.testapp.data.models.Countries
 import ru.coronavirus.testapp.databinding.CountryItemBinding
+import java.text.DecimalFormat
 
 class CountriesAdapter(
     private val toCountry: (Countries.Country) -> Unit
@@ -14,6 +15,7 @@ class CountriesAdapter(
     BindData<Countries.Country> {
 
     private var items: List<Countries.Country> = emptyList()
+    private val decimalFormatter = DecimalFormat("#,###,###,###")
 
     override fun setData(items: List<Countries.Country>) {
         this.items = items
@@ -51,7 +53,12 @@ class CountriesAdapter(
         fun bind(country: Countries.Country) {
             this.country = country
             binding.country = country
+            binding.holder = this
             binding.executePendingBindings()
+        }
+
+        fun formatNumber(number: Int): String {
+            return decimalFormatter.format(number.toLong())
         }
     }
 }

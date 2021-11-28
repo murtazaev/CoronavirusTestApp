@@ -1,8 +1,45 @@
 <resources>
     <string name="app_name">CoronavirusTestApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="statistic_by_country">Статистика по старанам</string>
     <string name="search_by_country">Поиск по странам</string>
     <string name="morbidity_by_days">Заболеваемость по дням</string>
+    <plurals name="cases_on_date">
+        <item quantity="zero">%1$s больных на %2$s</item>
+        <item quantity="one">%1$s больной на %2$s</item>
+        <item quantity="two">%1$s больных на %2$s</item>
+        <item quantity="few">%1$s больных на %2$s</item>
+        <item quantity="many">%1$s больных на %2$s</item>
+        <item quantity="other">%1$s больных на %2$s</item>
+    </plurals>
+
+    <plurals name="recoveries">
+        <item quantity="zero">%1$s выздоровлений</item>
+        <item quantity="one">%1$s выздоровление</item>
+        <item quantity="two">%1$s выздоровления</item>
+        <item quantity="few">%1$s выздоровления</item>
+        <item quantity="many">%1$s выздровлений</item>
+        <item quantity="other">%1$s выздоровлений</item>
+    </plurals>
+
+
+    <plurals name="confirms">
+        <item quantity="zero">%1$s больных</item>
+        <item quantity="one">%1$s больной</item>
+        <item quantity="two">%1$s больных</item>
+        <item quantity="few">%1$s больных</item>
+        <item quantity="many">%1$s больных</item>
+        <item quantity="other">%1$s больных</item>
+    </plurals>
+
+
+    <plurals name="death">
+        <item quantity="zero">%1$s смертей</item>
+        <item quantity="one">%1$s смерть</item>
+        <item quantity="two">%1$s смерти</item>
+        <item quantity="few">%1$s смерти</item>
+        <item quantity="many">%1$s смертей</item>
+        <item quantity="other">%1$s смертей</item>
+    </plurals>
+
+
 </resources>

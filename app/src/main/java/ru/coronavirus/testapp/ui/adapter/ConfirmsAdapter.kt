@@ -1,18 +1,20 @@
 package ru.coronavirus.testapp.ui.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import ru.coronavirus.testapp.R
 import ru.coronavirus.testapp.data.models.Confirm
 import ru.coronavirus.testapp.databinding.ConfirmedItemBinding
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
 class ConfirmsAdapter : RecyclerView.Adapter<ConfirmsAdapter.ConfirmedHolder>(), BindData<Confirm> {
 
     private var items: List<Confirm> = emptyList()
-    private val dateFormat = SimpleDateFormat("dd MMMM, yyyy", Locale.getDefault())
+    private val dateFormat = SimpleDateFormat("dd MMMM", Locale.getDefault())
+    private val decimalFormat = DecimalFormat("#,###,###,###")
 
     override fun setData(items: List<Confirm>) {
         this.items = items
@@ -42,8 +44,12 @@ class ConfirmsAdapter : RecyclerView.Adapter<ConfirmsAdapter.ConfirmedHolder>(),
 
         fun bind(confirmed: Confirm) {
             binding.run {
-                onDate.text = dateFormat.format(confirmed.date)
-                cases.text = confirmed.cases.toString()
+                casesOnDate.text = casesOnDate.context.resources.getQuantityString(
+                    R.plurals.cases_on_date,
+                    confirmed.cases,
+                    decimalFormat.format(confirmed.cases.toLong()),
+                    dateFormat.format(confirmed.date)
+                )
             }
         }
     }

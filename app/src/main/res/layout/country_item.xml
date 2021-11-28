@@ -6,16 +6,36 @@
         <variable
             name="country"
             type="ru.coronavirus.testapp.data.models.Countries.Country" />
+
+        <variable
+            name="holder"
+            type="ru.coronavirus.testapp.ui.adapter.CountriesAdapter.CountryHolder" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
+        android:orientation="vertical"
         android:layout_height="150dp">
 
         <TextView
             android:text="@{country.country}"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="@{@plurals/recoveries(country.totalRecovered, holder.formatNumber(country.totalRecovered))}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="@{@plurals/confirms(country.totalConfirmed, holder.formatNumber(country.totalConfirmed))}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="@{@plurals/death(country.totalDeath, holder.formatNumber(country.totalDeath))}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 </layout>

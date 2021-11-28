@@ -29,7 +29,10 @@ class GetCountryDetailsUseCase @Inject constructor(
             }
             .onErrorReturn {
                 val confirms = db.confirmsDao().getCountryConfirms(county.country)
-                confirms?.confirms ?: throw it
+                if (confirms == null || confirms.confirms.isEmpty()) {
+                    throw it
+                }
+                confirms.confirms
             }
     }
 }

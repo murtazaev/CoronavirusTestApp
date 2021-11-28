@@ -9,8 +9,8 @@ import io.reactivex.rxjava3.disposables.Disposable
 abstract class BaseViewModel : ViewModel() {
 
     protected val compositeDisposable = CompositeDisposable()
-    private val isLoadingObservable = ObservableBoolean(false)
-    private val errorObservable = ObservableBoolean(false)
+    val isLoadingObservable = ObservableBoolean(false)
+    val errorObservable = ObservableBoolean(false)
     val errorText = ObservableField("")
 
     var isLoading: Boolean
@@ -23,6 +23,8 @@ abstract class BaseViewModel : ViewModel() {
         set(value) {
             errorObservable.set(value)
         }
+
+    abstract fun retryLoad()
 
     override fun onCleared() {
         compositeDisposable.clear()

@@ -36,8 +36,24 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:bindData="@{vm.confirmsInTwoWeeks}"
+            app:invisibleIf="@{vm.errorObservable || vm.isLoadingObservable()}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+
+        <include
+            layout="@layout/screen_initial_progress_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:viewModel="@{vm}"/>
+
+        <include
+            layout="@layout/screen_error_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:viewModel="@{vm}" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

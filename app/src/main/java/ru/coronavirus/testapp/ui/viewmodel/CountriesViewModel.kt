@@ -72,4 +72,8 @@ class CountriesViewModel @Inject constructor(
             )
             .addTo(compositeDisposable)
     }
+
+    override fun retryLoad() {
+
+    }
 }

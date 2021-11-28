@@ -28,11 +28,11 @@ class CountryDetailViewModel @Inject constructor(
     //минута в милисекундах * минут в часе * часов в дне * дней в двух неделях
     private val twoWeeksInMillis = 60000 * 60 * 24 * 14
 
-    fun requestDetails(country: Countries.Country) {
+    fun requestDetails() {
         error = false
         isLoading = true
         getDetails.execute(
-            country,
+            country.get()!!,
             simpleDateFormat.format(Date(System.currentTimeMillis() - twoWeeksInMillis)),
             //На сервере ошибка, если нет данных на текущую дату, то он начинает возвращать всю историю
             //поэтому отнимаю сутки
@@ -50,5 +50,9 @@ class CountryDetailViewModel @Inject constructor(
                 }
             )
             .addTo(compositeDisposable)
+    }
+
+    override fun retryLoad() {
+        requestDetails()
     }
 }

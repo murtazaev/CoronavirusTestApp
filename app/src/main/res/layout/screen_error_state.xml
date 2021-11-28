@@ -8,19 +8,23 @@
             type="ru.coronavirus.testapp.ui.viewmodel.BaseViewModel" />
     </data>
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
         app:visibleIf="@{viewModel.errorObservable}">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{viewModel.errorText}" />
 
         <Button
-            android:onClick="@{(v) -> viewModel.retryLoad()}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </FrameLayout>
+            android:layout_width="match_parent"
+            android:text="@string/try_again"
+            android:layout_height="wrap_content"
+            android:onClick="@{(v) -> viewModel.retryLoad()}" />
+    </LinearLayout>
 </layout>

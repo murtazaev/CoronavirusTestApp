@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="chart_axis_and_texts_color">@color/white</color>
+
+    <color name="iconColor">@color/white</color>
+    <color name="screenBackgroundColor">@color/black</color>
+    <color name="textColor">@color/white</color>
 </resources>

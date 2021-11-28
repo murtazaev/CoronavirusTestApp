@@ -14,23 +14,40 @@
         android:id="@+id/coordinator"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/screenBackgroundColor"
         android:orientation="vertical"
         tools:context=".ui.fragments.CountriesFragment">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/screenBackgroundColor">
 
-            <EditText
-                android:id="@+id/searchView"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/search_by_country"
-                android:text="@={vm.searchStr}"
-                android:enabled="@{!vm.errorObservable &amp;&amp; !vm.isLoadingObservable()}"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                app:layout_scrollFlags="scroll|enterAlways" />
+                android:orientation="horizontal"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <EditText
+                    android:id="@+id/searchView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="@{!vm.errorObservable &amp;&amp; !vm.isLoadingObservable()}"
+                    android:hint="@string/search_by_country"
+                    android:text="@={vm.searchStr}"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:onClick="@{(v) -> vm.requestCountries()}"
+                    android:src="@drawable/ic_update" />
+            </LinearLayout>
+
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView

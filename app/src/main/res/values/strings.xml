@@ -4,6 +4,7 @@
     <string name="search_by_country">Поиск по странам</string>
     <string name="morbidity_by_days">Заболеваемость по дням</string>
     <string name="empty_search">Ничего не найдено</string>
+    <string name="try_again">Попробовать снова</string>
     <plurals name="cases_on_date">
         <item quantity="zero">%1$s больных на %2$s</item>
         <item quantity="one">%1$s больной на %2$s</item>

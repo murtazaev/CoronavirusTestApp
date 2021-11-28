@@ -13,5 +13,7 @@
     <color name="red">#FF0000</color>
     <color name="blue">#142FC6</color>
 
-    <color name="chart_axis_and_texts_color">@color/black</color>
+    <color name="iconColor">@color/black</color>
+    <color name="screenBackgroundColor">@color/white</color>
+    <color name="textColor">@color/black</color>
 </resources>

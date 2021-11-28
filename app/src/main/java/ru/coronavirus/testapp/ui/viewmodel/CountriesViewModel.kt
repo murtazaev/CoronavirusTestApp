@@ -45,6 +45,7 @@ class CountriesViewModel @Inject constructor(
                     countries.addAll(mCountries.countries)
                 },
                 { mError ->
+                    errorText.set(mError.cause?.message)
                     error = true
                 }
             )

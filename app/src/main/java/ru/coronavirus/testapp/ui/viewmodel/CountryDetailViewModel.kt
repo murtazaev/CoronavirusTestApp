@@ -46,6 +46,7 @@ class CountryDetailViewModel @Inject constructor(
                     confirmsInTwoWeeks.addAll(it)
                 },
                 {
+                    errorText.set(it.cause?.message)
                     error = true
                 }
             )

@@ -37,8 +37,8 @@
                     android:enabled="@{!vm.errorObservable &amp;&amp; !vm.isLoadingObservable()}"
                     android:hint="@string/search_by_country"
                     android:text="@={vm.searchStr}"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white" />
+                    android:textColor="@color/textColor"
+                    android:textColorHint="@color/textColor" />
 
                 <ImageButton
                     android:layout_width="50dp"

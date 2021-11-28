@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -14,28 +14,41 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_height="150dp">
+        android:paddingVertical="8dp">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@{country.country}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:textColor="@color/textColor"
+            android:textSize="25sp"
+            tools:text="sfsdf" />
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="@{@plurals/recoveries(country.totalRecovered, holder.formatNumber(country.totalRecovered))}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:textColor="@color/textColor"
+            tools:text="sfsdf" />
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="@{@plurals/confirms(country.totalConfirmed, holder.formatNumber(country.totalConfirmed))}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:textColor="@color/textColor"
+            tools:text="sfsdf" />
 
         <TextView
-            android:text="@{@plurals/death(country.totalDeath, holder.formatNumber(country.totalDeath))}"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{@plurals/death(country.totalDeath, holder.formatNumber(country.totalDeath))}"
+            android:textColor="@color/textColor"
+            tools:text="sfsdf" />
 
     </LinearLayout>
 </layout>

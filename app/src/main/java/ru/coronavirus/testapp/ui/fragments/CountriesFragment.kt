@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import ru.coronavirus.testapp.R
 import ru.coronavirus.testapp.databinding.FragmentCountriesBinding
 import ru.coronavirus.testapp.ui.MainActivity
@@ -24,13 +25,17 @@ class CountriesFragment : BaseFragment<FragmentCountriesBinding>() {
         )
     }
 
+    override fun initialRequest() {
+        viewModel.requestCountries()
+    }
+
+    override fun initialRequestDataAlreadyLoaded(): Boolean {
+        return viewModel.countries.isNotEmpty()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         (context as MainActivity).mainComponent.inject(this)
         super.onCreate(savedInstanceState)
-    }
-
-    override fun initialRequest() {
-        viewModel.requestCountries()
     }
 
     override fun onCreateView(
@@ -44,5 +49,6 @@ class CountriesFragment : BaseFragment<FragmentCountriesBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.countriesRV.adapter = adapter
+        binding.countriesRV.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
     }
 }

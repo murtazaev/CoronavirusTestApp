@@ -2,6 +2,9 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/casesOnDate"
+    android:textSize="20sp"
+    android:textColor="@color/textColor"
+    android:paddingVertical="20dp"
     tools:text="14324 заражений на 12 ноября"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content" />

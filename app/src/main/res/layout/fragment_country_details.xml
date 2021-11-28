@@ -26,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{vm.country.country}"
+                android:textColor="@color/textColor"
                 android:textSize="30sp"
                 app:layout_scrollFlags="scroll"
                 tools:text="Russia" />

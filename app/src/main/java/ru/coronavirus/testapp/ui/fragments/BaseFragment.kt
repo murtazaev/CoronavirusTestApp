@@ -11,20 +11,22 @@ abstract class BaseFragment<B : ViewBinding> : Fragment() {
     protected val navController by lazy { findNavController() }
     protected var _binding: B? = null
     protected val binding: B get() = requireNotNull(_binding)
-    protected var firstRequestDone = false
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (!firstRequestDone) {
+        if (!initialRequestDataAlreadyLoaded()) {
             initialRequest()
-            firstRequestDone = true
         }
     }
 
     abstract fun initialRequest()
+
+    open fun initialRequestDataAlreadyLoaded(): Boolean {
+        return false
+    }
 
     override fun onDestroyView() {
         _binding = null

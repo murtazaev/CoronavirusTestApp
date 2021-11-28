@@ -25,14 +25,18 @@ class CountryDetailsFragment : BaseFragment<FragmentCountryDetailsBinding>() {
 
     private val adapter = ConfirmsAdapter()
 
+    override fun initialRequest() {
+        viewModel.requestDetails()
+    }
+
+    override fun initialRequestDataAlreadyLoaded(): Boolean {
+        return viewModel.confirmsInTwoWeeks.isNotEmpty()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         (context as MainActivity).mainComponent.inject(this)
         viewModel.country.set(args.country)
         super.onCreate(savedInstanceState)
-    }
-
-    override fun initialRequest() {
-        viewModel.requestDetails()
     }
 
     override fun onCreateView(

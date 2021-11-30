@@ -5,4 +5,5 @@ import ru.coronavirus.testapp.data.models.Countries
 
 interface CountriesRepository {
     fun getCountriesList(): Single<Countries>
+    fun searchCountries(query: String): List<Countries.Country>
 }

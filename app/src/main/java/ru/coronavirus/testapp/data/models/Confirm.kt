@@ -7,16 +7,7 @@ import kotlinx.serialization.Serializable
 import java.util.*
 
 @Serializable
-@Entity(
-    foreignKeys = [
-        ForeignKey(
-            entity = Countries.Country::class,
-            parentColumns = ["country"],
-            childColumns = ["countryConfirmed"],
-            onDelete = ForeignKey.NO_ACTION
-        )
-    ]
-)
+@Entity
 data class Confirm(
     //назвал так просто чтоб путаницы небыло в связях базы данных
     @SerialName("Country") val countryConfirmed: String,
